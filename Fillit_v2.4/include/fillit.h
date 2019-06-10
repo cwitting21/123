@@ -6,7 +6,7 @@
 /*   By: wmaykit <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 20:51:56 by wmaykit           #+#    #+#             */
-/*   Updated: 2019/06/10 19:06:46 by cwitting         ###   ########.fr       */
+/*   Updated: 2019/06/10 22:03:17 by cwitting         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int					new_lst_subset(unsigned last, t_matrix *root, int lvl,
 void				printmatrix(t_matrix *root);
 void				ft_links(t_matrix *new, t_matrix *ptr);
 t_stack				*backtracking(t_matrix **knut, int *figures, int opt);
-int					algorithm_dlx(t_matrix *knut, t_stack *stack, int figures);
+int					algorithm_dlx(t_matrix *knut, t_stack *stack, int figures, int len);
 void				sew(t_matrix *knut);
 t_stack				*add_to_stack(t_stack *stack, t_matrix *res);
 t_stack				*new_lst_stack(t_matrix *res);

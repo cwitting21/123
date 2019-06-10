@@ -6,7 +6,7 @@
 /*   By: wmaykit <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 12:30:22 by wmaykit           #+#    #+#             */
-/*   Updated: 2019/06/09 20:37:01 by cwitting         ###   ########.fr       */
+/*   Updated: 2019/06/10 22:01:44 by cwitting         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ t_stack		*backtracking(t_matrix **knut, int *figures, int opt)
 		return (NULL);
 	}
 	else
-		while (!algorithm_dlx(*knut, stack, figures[0]))
+		while (!algorithm_dlx(*knut, stack, figures[0], figures[0]))
 		{
 			if (!buildmatrix(figures, knut, ++edge))
 				return (NULL);

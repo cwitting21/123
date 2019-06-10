@@ -6,7 +6,7 @@
 /*   By: wmaykit <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/16 19:54:16 by wmaykit           #+#    #+#             */
-/*   Updated: 2019/06/10 17:50:53 by cwitting         ###   ########.fr       */
+/*   Updated: 2019/06/10 20:42:40 by cwitting         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,8 +98,8 @@ void				printmatrix(t_matrix *root)
 				ft_putstr(" ");*/
 			ft_putchar(' ');
 		}
-		if (!(i % 4))
-			ft_putchar('\n');
+		//if (!(i % 4))
+		//	ft_putchar('\n');
 		i++;
 		start = start->right;
 	}

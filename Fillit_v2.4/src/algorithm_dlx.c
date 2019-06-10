@@ -6,7 +6,7 @@
 /*   By: wmaykit <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/06 20:36:26 by wmaykit           #+#    #+#             */
-/*   Updated: 2019/06/10 17:54:35 by cwitting         ###   ########.fr       */
+/*   Updated: 2019/06/10 22:10:32 by cwitting         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,31 @@ static t_matrix	*search(t_matrix *knut, char name)
 	return (NULL);
 }
 
-int				algorithm_dlx(t_matrix *knut, t_stack *stack, int figures)
+static int		check(t_matrix *root, int figures, int len)
+{
+	t_matrix	*check;
+	t_matrix	*go_bot;
+	int			res;
+
+	res = len - figures;
+	check = root->right;
+	while (check != root)
+	{
+		go_bot = check->bot;
+		while (go_bot != check)
+		{
+			if (go_bot->name == 'A' + res)
+				res += 1;
+			if (res == len)
+				return (1);
+			go_bot = go_bot->bot;
+		}
+		check = check->right;
+	}
+	return (0);
+}
+
+int				algorithm_dlx(t_matrix *knut, t_stack *stack, int figures, int len)
 {
 	t_matrix	*guess;
 	t_matrix	*tmp;
@@ -75,7 +99,8 @@ int				algorithm_dlx(t_matrix *knut, t_stack *stack, int figures)
 
 	if (figures == 0)
 		return (1);
-	if (!(guess = search(knut, stack && stack->res ? stack->res->name + 1 : 'A')))
+	if (!(guess = search(knut, stack && stack->res ? stack->res->name + 1 : 'A'))
+				|| !check(knut, figures, len))
 		return (0);
 	if (!(stack = add_to_stack(stack, guess)))
 		return (-1);
@@ -98,7 +123,7 @@ int				algorithm_dlx(t_matrix *knut, t_stack *stack, int figures)
 		stack = del_lst_stack(stack);
 		if (!(res = algorithm_dlx(knut, stack, figures)))
 			recovery_wrong(save, guess->left, figures + 1000);*/
-	if (!(res = algorithm_dlx(knut, stack, figures - 1)))
+	if (!(res = algorithm_dlx(knut, stack, figures - 1, len)))
 	{
 		recovery(guess, figures);
 		//stack = del_lst_stack(stack);
@@ -111,8 +136,8 @@ int				algorithm_dlx(t_matrix *knut, t_stack *stack, int figures)
 			return (0);
 		}
 		stack = del_lst_stack(stack);
-		if (!(res = algorithm_dlx(knut, stack, figures)))
-			recover_wrong(tmp, guess->left, figures + 1000);
+	//	if(!(res = algorithm_dlx(knut, stack, figures, len)))
+	//		recover_wrong(guess->right->right->right, tmp, figures);
 		//recover_wrong(guess->right->right->right, tmp, figures);
 		//if (!select_next_guess(&stack, figures))
 		//{
