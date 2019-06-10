@@ -6,7 +6,7 @@
 /*   By: wmaykit <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 15:18:54 by wmaykit           #+#    #+#             */
-/*   Updated: 2019/05/18 00:30:01 by wmaykit          ###   ########.fr       */
+/*   Updated: 2019/06/10 16:34:15 by cwitting         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,6 @@
 
 int		ft_error(void)
 {
-	ft_putendl("Error");
+	ft_putendl("error");
 	return (1);
 }

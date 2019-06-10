@@ -6,7 +6,7 @@
 /*   By: wmaykit <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 12:22:14 by wmaykit           #+#    #+#             */
-/*   Updated: 2019/05/22 12:31:43 by wmaykit          ###   ########.fr       */
+/*   Updated: 2019/06/10 16:30:25 by cwitting         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,7 @@ int				buildsets(t_matrix **root, int *figures, unsigned edge)
 		if (!(last = new_lst_set(*root, figures[i], lvl, edge)) ||
 				!(lvl = new_lst_subset(last, *root, lvl, edge)))
 			return (0);
-		ft_putstr("22222222222222222\n");
 		i++;
 	}
-	ft_putstr("111111111111111111111111111111\n");
 	return (1);
 }
