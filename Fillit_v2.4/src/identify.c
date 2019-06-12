@@ -6,7 +6,7 @@
 /*   By: wmaykit <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/13 13:08:47 by wmaykit           #+#    #+#             */
-/*   Updated: 2019/06/12 15:33:47 by wmaykit          ###   ########.fr       */
+/*   Updated: 2019/06/12 15:48:46 by wmaykit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,10 @@ int		*identify(int len, char **read)
 	if (len <= 0 || ((len + 1) % 21 > 0) || !far(&out, (((len + 1) / 21) + 1)))
 		return (0);
 	if (!convert(*read, out + 1) || !valid(out))
+	{
+		if (out)
+			free(out)
 		return (0);
+	}
 	 return (out);
 }
