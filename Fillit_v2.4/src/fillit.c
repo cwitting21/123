@@ -6,7 +6,7 @@
 /*   By: wmaykit <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 21:00:23 by wmaykit           #+#    #+#             */
-/*   Updated: 2019/06/12 19:11:38 by wmaykit          ###   ########.fr       */
+/*   Updated: 2019/06/12 21:16:17 by wmaykit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int		fillit(const int fd, int opt)
 			ft_printbits(figures[++i], 32);
 		return (1);
 	}
-	if (!(!solve(figures, opt)))
+	if (!solve(figures, opt))
 		return (0);
 	return (1);
 }
