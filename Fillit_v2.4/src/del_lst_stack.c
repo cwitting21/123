@@ -6,7 +6,7 @@
 /*   By: wmaykit <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/25 17:34:20 by wmaykit           #+#    #+#             */
-/*   Updated: 2019/06/06 15:17:16 by wmaykit          ###   ########.fr       */
+/*   Updated: 2019/06/12 15:44:32 by cwitting         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ t_stack		*del_lst_stack(t_stack *lstdel)
 	{
 		lstdel->right->left = lstdel->left;
 		lstdel->left->right = lstdel->right;
-		//free(lstdel);
 		lstdel = NULL;
 	}
 	return (out);

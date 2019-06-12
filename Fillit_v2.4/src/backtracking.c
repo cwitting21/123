@@ -6,7 +6,7 @@
 /*   By: wmaykit <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 12:30:22 by wmaykit           #+#    #+#             */
-/*   Updated: 2019/06/11 22:27:02 by cwitting         ###   ########.fr       */
+/*   Updated: 2019/06/12 15:49:12 by cwitting         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 static int		minsqrt(int *figures)
 {
-	int	res;
-	int	i;
-	int	check;
+	int			res;
+	int			i;
+	int			check;
 
 	i = 0;
 	check = 0;
@@ -25,15 +25,13 @@ static int		minsqrt(int *figures)
 	i = 0;
 	while (i++ < figures[0])
 		if (res == 3 && (figures[i] == I || figures[i] == I1))
-				check = 1;
+			check = 1;
 	return (res + check);
 }
 
-t_stack		*backtracking(t_matrix **knut, int *figures, int opt)
+t_stack			*backtracking(t_matrix **knut, int *figures, int opt)
 {
 	t_stack		*stack;
-	t_matrix	*test;
-	t_matrix    *test1;
 	unsigned	edge;
 	int			i;
 
@@ -43,32 +41,9 @@ t_stack		*backtracking(t_matrix **knut, int *figures, int opt)
 		return (NULL);
 	stack->edge = edge;
 	if (opt == 2 || opt == 3)
-	{
 		printmatrix(*knut);
-		test = (*knut)->right->top;
-		test1 = test->set_prev;
-		while (test1 && test != test1)
-		{
-			ft_putchar(test1->name);
-			ft_putchar('[');
-			ft_putnbr(test1->x);
-			ft_putchar(']');
-			ft_putchar(' ');
-			test1 = test1->set_prev;
-			if (test1 == NULL)
-			{
-				ft_putstr("\n\n");
-				ft_putstr("fack fack fack fack fack fack fack fack fack");
-				ft_putstr("\n\n");
-			}
-		}
-		ft_putstr("\n\n");
-		ft_putstr("end");
-		ft_putstr("\n");
-		return (NULL);
-	}
 	else
-		while (!algorithm_dlx(*knut, stack, figures[0] , figures[0] ))
+		while (!algorithm_dlx(*knut, stack, figures[0], figures[0]))
 		{
 			if (!buildmatrix(figures, knut, ++edge))
 				return (NULL);

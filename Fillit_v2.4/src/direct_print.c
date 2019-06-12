@@ -6,7 +6,7 @@
 /*   By: cwitting <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/10 18:34:34 by cwitting          #+#    #+#             */
-/*   Updated: 2019/06/10 19:09:57 by cwitting         ###   ########.fr       */
+/*   Updated: 2019/06/12 15:50:45 by cwitting         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ static void		printone(int key)
 		ft_putchar('.');
 }
 
-int		direct_print(int *figures)
+int				direct_print(int *figures)
 {
-	int	edge;
-	int	i;
+	int			edge;
+	int			i;
 
 	edge = 3;
 	i = 1;
