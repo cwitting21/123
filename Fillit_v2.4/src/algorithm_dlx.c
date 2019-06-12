@@ -6,7 +6,7 @@
 /*   By: wmaykit <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/06 20:36:26 by wmaykit           #+#    #+#             */
-/*   Updated: 2019/06/12 18:47:43 by cwitting         ###   ########.fr       */
+/*   Updated: 2019/06/12 19:09:15 by cwitting         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 ** scan - ischet ostalis li takie zhe bukvi
 */
 
-int				scan(t_matrix *root, char name)
+int					scan(t_matrix *root, char name)
 {
 	t_matrix	*start;
 
@@ -31,7 +31,7 @@ int				scan(t_matrix *root, char name)
 	return (0);
 }
 
-void		recover_wrong(t_matrix *end, t_matrix *start, int stage)
+void				recover_wrong(t_matrix *end, t_matrix *start, int stage)
 {
 	while (start != end)
 	{
@@ -41,9 +41,9 @@ void		recover_wrong(t_matrix *end, t_matrix *start, int stage)
 	recovery_lst_str(start, 1000 + stage);
 }
 
-t_matrix	*del_wrong(t_matrix *guess, int stage)
+t_matrix			*del_wrong(t_matrix *guess, int stage)
 {
-	t_matrix	*tmp;
+	t_matrix		*tmp;
 
 	tmp = guess->left->left;
 	del_lst_str(guess->left, 1000 + stage);
@@ -55,9 +55,9 @@ t_matrix	*del_wrong(t_matrix *guess, int stage)
 	return (tmp->set_next);
 }
 
-static t_matrix	*search(t_matrix *knut, char name)
+static t_matrix		*search(t_matrix *knut, char name)
 {
-	t_matrix	*start;
+	t_matrix		*start;
 
 	start = knut->right;
 	while (start != knut)
@@ -93,10 +93,11 @@ static t_matrix	*search(t_matrix *knut, char name)
 **	}
 **	return (0);
 **}
+** check(knut, figures, len)
 */
 
-int				algorithm_dlx(t_matrix *knut, t_stack *stack, int figures,
-				int len)
+int					algorithm_dlx(t_matrix *knut, t_stack *stack, int figures,
+					int len)
 {
 	t_matrix	*guess;
 	t_matrix	*tmp;
@@ -104,8 +105,7 @@ int				algorithm_dlx(t_matrix *knut, t_stack *stack, int figures,
 
 	if (figures == 0)
 		return (1);
-	if (!(guess = search(knut, 'A' + (len - figures)))
-				/*|| !check(knut, figures, len)*/)
+	if (!(guess = search(knut, 'A' + (len - figures))))
 		return (0);
 	del_cover(guess, figures);
 	if (!(res = algorithm_dlx(knut, stack, figures - 1, len)))
