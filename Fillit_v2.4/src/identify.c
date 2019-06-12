@@ -6,7 +6,7 @@
 /*   By: wmaykit <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/13 13:08:47 by wmaykit           #+#    #+#             */
-/*   Updated: 2019/05/13 20:56:38 by wmaykit          ###   ########.fr       */
+/*   Updated: 2019/06/12 15:06:08 by wmaykit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,10 +90,8 @@ static int		convert(char *map, int *bits)
 		{
 			if (*map != '\n')
 				++i;
-			else if (i != 4)
+			else if (!(i % 4)
 				return (0);
-			else
-				i = 0;
 			*bits = bitmove(*bits, *map);
 		}
 		else
