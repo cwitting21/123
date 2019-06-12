@@ -6,16 +6,16 @@
 /*   By: wmaykit <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/13 13:08:47 by wmaykit           #+#    #+#             */
-/*   Updated: 2019/05/13 20:56:38 by wmaykit          ###   ########.fr       */
+/*   Updated: 2019/06/12 18:51:45 by cwitting         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-static int		far(int **place, int len)
+static int			far(int **place, int len)
 {
-	int *new;
-	int i;
+	int				*new;
+	int				i;
 
 	i = 1;
 	if (!(new = (int *)malloc(sizeof(int) * len)))
@@ -30,18 +30,18 @@ static int		far(int **place, int len)
 	return (1);
 }
 
-static int		last_step(int *b)
+static int			last_step(int *b)
 {
-	int		check;
-	int		i;
-	
+	int				check;
+	int				i;
+
 	i = -1;
 	check = 0;
 	while (i++ < 3 && !check)
 	{
 		if (!(*b ^ O) || !(*b ^ Z) || !(*b ^ Z1) || !(*b ^ Z2) || !(*b ^ Z3)
 				|| !(*b ^ I) || !(*b ^ I1) || !(*b ^ T) || !(*b ^ T1)
-			   	|| !(*b ^ T2) || !(*b ^ T3) || !(*b ^ L) || !(*b ^ L1)
+				|| !(*b ^ T2) || !(*b ^ T3) || !(*b ^ L) || !(*b ^ L1)
 				|| !(*b ^ L2) || !(*b ^ L3) || !(*b ^ L4) || !(*b ^ L5)
 				|| !(*b ^ L6) || !(*b ^ L7))
 			return (1);
@@ -52,10 +52,10 @@ static int		last_step(int *b)
 	return (0);
 }
 
-static int		valid(int *bits)
+static int			valid(int *bits)
 {
-	int num;
-	int i;
+	int				num;
+	int				i;
 
 	i = 0;
 	num = 1;
@@ -77,23 +77,24 @@ static int		valid(int *bits)
 	return (1);
 }
 
-static int		convert(char *map, int *bits)
+static int			convert(char *map, int *bits)
 {
-	int i;
+	int				i;
 
 	i = 0;
 	while (*map)
 	{
 		if (*map == '\n' && *(map - 1) == '\n')
-			++bits;
+			if (!(i % 8))
+				++bits;
+			else
+				return (0);
 		else if (*map == '#' || *map == '.' || *map == '\n')
 		{
 			if (*map != '\n')
 				++i;
-			else if (i != 4)
+			else if (i % 4)
 				return (0);
-			else
-				i = 0;
 			*bits = bitmove(*bits, *map);
 		}
 		else
@@ -103,13 +104,17 @@ static int		convert(char *map, int *bits)
 	return (1);
 }
 
-int		*identify(int len, char **read)
+int					*identify(int len, char **read)
 {
-	int		*out;
+	int				*out;
 
 	if (len <= 0 || ((len + 1) % 21 > 0) || !far(&out, (((len + 1) / 21) + 1)))
 		return (0);
 	if (!convert(*read, out + 1) || !valid(out))
+	{
+		if (out)
+			free(out);
 		return (0);
-	 return (out);
+	}
+	return (out);
 }

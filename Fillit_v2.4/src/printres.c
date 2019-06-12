@@ -6,7 +6,7 @@
 /*   By: wmaykit <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/26 14:49:45 by wmaykit           #+#    #+#             */
-/*   Updated: 2019/06/12 00:02:18 by cwitting         ###   ########.fr       */
+/*   Updated: 2019/06/12 18:53:36 by cwitting         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ void			printres(t_stack *res)
 	while (x <= sqr)
 	{
 		start = res->left;
-		while (start->res &&start->res->x != x && start->res->right->x != x &&
-				start->res->right->right->x != x &&
+		while (start->res && start->res->x != x && start->res->right->x != x
+				&& start->res->right->right->x != x &&
 				start->res->right->right->right->x != x)
 			start = start->left;
 		printone(start, x);

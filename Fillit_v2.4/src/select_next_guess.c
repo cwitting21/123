@@ -6,7 +6,7 @@
 /*   By: wmaykit <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/07 17:47:11 by wmaykit           #+#    #+#             */
-/*   Updated: 2019/06/09 20:54:15 by cwitting         ###   ########.fr       */
+/*   Updated: 2019/06/12 18:44:34 by cwitting         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static t_matrix	*del_guess(t_matrix *guess, int stage)
 
 static void		recovery_guess(t_matrix *del, t_matrix *end, int stage)
 {
-	int 		i;
+	int			i;
 
 	i = 0;
 	while (del != end)
@@ -64,7 +64,8 @@ int				select_next_guess(t_stack **stack, int figures)
 		recovery((*stack)->res, figures);
 		save = del_guess((*stack)->res, (*stack)->res->name);
 		if (!(key = scan((*stack)->res->root->root, (*stack)->res->name)))
-			recovery_guess(save, (*stack)->res->right->right->right, (*stack)->res->name);
+			recovery_guess(save, (*stack)->res->right->right->right,
+			(*stack)->res->name);
 		*stack = del_lst_stack((*stack));
 	}
 	return (!(*stack)->res && !key ? 0 : 1);

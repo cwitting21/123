@@ -6,7 +6,7 @@
 /*   By: wmaykit <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/16 00:15:28 by wmaykit           #+#    #+#             */
-/*   Updated: 2019/05/25 20:26:05 by wmaykit          ###   ########.fr       */
+/*   Updated: 2019/06/12 18:54:13 by cwitting         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void			link_set(t_matrix *new)
 		new->set_prev = start;
 		start = new;
 	}
-	else 
+	else
 	{
 		if (prev && start->name + 1 == new->name)
 		{

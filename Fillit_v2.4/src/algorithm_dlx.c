@@ -6,7 +6,7 @@
 /*   By: wmaykit <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/06 20:36:26 by wmaykit           #+#    #+#             */
-/*   Updated: 2019/06/12 15:53:20 by cwitting         ###   ########.fr       */
+/*   Updated: 2019/06/12 18:47:43 by cwitting         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ static t_matrix	*search(t_matrix *knut, char name)
 	while (start != knut)
 	{
 		if (start->bot->name == name)
-			return(start->bot);
+			return (start->bot);
 		start = start->right;
 	}
 	return (NULL);
@@ -95,7 +95,8 @@ static t_matrix	*search(t_matrix *knut, char name)
 **}
 */
 
-int				algorithm_dlx(t_matrix *knut, t_stack *stack, int figures, int len)
+int				algorithm_dlx(t_matrix *knut, t_stack *stack, int figures,
+				int len)
 {
 	t_matrix	*guess;
 	t_matrix	*tmp;
@@ -116,7 +117,7 @@ int				algorithm_dlx(t_matrix *knut, t_stack *stack, int figures, int len)
 			recover_wrong(guess->right->right->right, tmp, figures);
 			return (0);
 		}
-		if(!(res = algorithm_dlx(knut, stack, figures, len)))
+		if (!(res = algorithm_dlx(knut, stack, figures, len)))
 			recover_wrong(guess->right->right->right, tmp, figures);
 	}
 	else

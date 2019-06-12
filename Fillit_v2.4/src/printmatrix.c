@@ -6,7 +6,7 @@
 /*   By: wmaykit <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/16 19:54:16 by wmaykit           #+#    #+#             */
-/*   Updated: 2019/06/11 22:11:05 by cwitting         ###   ########.fr       */
+/*   Updated: 2019/06/12 18:50:30 by cwitting         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,14 +58,9 @@ static void			printone(t_matrix *col, unsigned lvl)
 		ft_putchar(col->name);
 		ft_putstr("\033[00m");
 		ft_putnbr(col->x);
-		//ft_putchar(':');
-		//ft_putnbr(col->y);
-		//ft_putchar('_');
-		//ft_putnbr(col->s);
 	}
 	else
 		ft_putchar('.');
-		//ft_putnbr(col->x);
 }
 
 void				printmatrix(t_matrix *root)
@@ -92,14 +87,8 @@ void				printmatrix(t_matrix *root)
 		if (lvl <= len_max)
 		{
 			printone(start->bot, lvl);
-			/*if (start->x >= 10)
-				ft_putstr(" ");
-			if (start->x >= 100)
-				ft_putstr(" ");*/
 			ft_putchar(' ');
 		}
-		//if (!(i % 7))
-		//	ft_putchar('\n');
 		i++;
 		start = start->right;
 	}

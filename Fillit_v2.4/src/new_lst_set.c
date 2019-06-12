@@ -6,7 +6,7 @@
 /*   By: wmaykit <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 13:42:21 by wmaykit           #+#    #+#             */
-/*   Updated: 2019/05/26 13:56:13 by wmaykit          ###   ########.fr       */
+/*   Updated: 2019/06/12 18:33:03 by cwitting         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,7 @@ static int		movebits(int figure, int key, unsigned edge)
 	if (edge < 4)
 	{
 		if (key == 2)
-		{
-			//ft_putstr("***************************************\n");
 			figure >>= 2;
-		}
 		else if (key < 3)
 			figure >>= 1;
 	}
@@ -54,7 +51,6 @@ unsigned		new_lst_set(t_matrix *root, int figure, int level, unsigned len)
 	unsigned	count;
 	unsigned	key;
 
-	//ft_putstr("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n");
 	key = 0;
 	ptr = root->right;
 	count = 1;
@@ -64,20 +60,12 @@ unsigned		new_lst_set(t_matrix *root, int figure, int level, unsigned len)
 			if (!(new_lst_bot(ptr, root, level)))
 				return (0);
 		figure = movebits(figure, key++, len);
-		//if (key++ < 4)
-		//	figure >>= 1;
 		if (key == len)
 			key = 0;
 		ptr = ptr->root->right;
 		count++;
-		//ft_putnbr(count);
-		//ft_putchar('\n');
 		while (ptr->x != count && figure && ptr != root)
-		{
-			//ft_putstr("111111111111111111111111111111\n");
 			ptr = ptr->right;
-		}
 	}
-	//ft_putstr("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n");
 	return (count - 1);
 }
