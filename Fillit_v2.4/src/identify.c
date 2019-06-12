@@ -6,7 +6,7 @@
 /*   By: wmaykit <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/13 13:08:47 by wmaykit           #+#    #+#             */
-/*   Updated: 2019/06/12 18:51:45 by cwitting         ###   ########.fr       */
+/*   Updated: 2019/06/12 19:08:42 by wmaykit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,9 @@ int					*identify(int len, char **read)
 	{
 		if (out)
 			free(out);
+		free(*read);
 		return (0);
 	}
+	free(*read);
 	return (out);
 }
