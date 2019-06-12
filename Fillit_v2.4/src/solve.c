@@ -6,7 +6,7 @@
 /*   By: wmaykit <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/13 21:03:01 by wmaykit           #+#    #+#             */
-/*   Updated: 2019/06/12 21:18:20 by wmaykit          ###   ########.fr       */
+/*   Updated: 2019/06/12 22:51:09 by wmaykit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ int				solve(int *figures, int opt)
 	if (!(res = backtracking(&knut, figures, opt)))
 		return (0);
 	printres(res);
+	clean_matrix(&knut);
+	del_stack(res, res->right);
 	free(figures);
 	return (1);
 }

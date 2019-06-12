@@ -6,7 +6,7 @@
 /*   By: wmaykit <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 20:51:56 by wmaykit           #+#    #+#             */
-/*   Updated: 2019/06/12 21:55:27 by wmaykit          ###   ########.fr       */
+/*   Updated: 2019/06/12 22:49:00 by wmaykit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,5 +96,6 @@ int					select_next_guess(t_stack **stack, int figures);
 void				del_cover(t_matrix *start, int stage);
 int					direct_print(int *figures);
 void				clean_matrix(t_matrix **root);
+void				del_stack(t_stack *end, t_stack *start);
 
 #endif
