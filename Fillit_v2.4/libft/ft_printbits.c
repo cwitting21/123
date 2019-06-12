@@ -6,18 +6,17 @@
 /*   By: wmaykit <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/12 22:36:19 by wmaykit           #+#    #+#             */
-/*   Updated: 2019/05/13 15:31:49 by wmaykit          ###   ########.fr       */
+/*   Updated: 2019/06/12 20:47:41 by wmaykit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void		ft_printbits(unsigned long long bits, int lenbit)
+void					ft_printbits(unsigned long long bits, int lenbit)
 {
 	unsigned long long	mask;
 	int					len;
 	int					item;
-
 
 	mask = 1;
 	len = 0;
