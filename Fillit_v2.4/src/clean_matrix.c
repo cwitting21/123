@@ -1,24 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   buildmatrix.c                                      :+:      :+:    :+:   */
+/*   clean_matrix.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wmaykit <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/13 21:13:02 by wmaykit           #+#    #+#             */
-/*   Updated: 2019/06/12 21:54:58 by wmaykit          ###   ########.fr       */
+/*   Created: 2019/06/12 20:50:46 by wmaykit           #+#    #+#             */
+/*   Updated: 2019/06/12 21:51:15 by wmaykit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int				buildmatrix(int *figures, t_matrix **knut, unsigned edge)
+static void		clean_col(t_matrix *top, t_matrix *bot)
 {
-	if (knut && *knut)
-		clean_matrix(knut);
-	if (!(*knut = newlst(NULL, 0, 0, 0)) || !(header_lst_str(knut, edge * edge))
-			|| !(buildsets(knut, figures, edge)))
-		return (0);
-	sew(*knut);
-	return (1);
+	if (bot == top)
+		return ;
+	clean_col(top, bot->bot);
+	free(bot);
+	bot = NULL;
+}
+
+static void		clean_str(t_matrix *root, t_matrix *str)
+{
+	if (str == root)
+		return ;
+	clean_str(root, str->right);
+	clean_col(str, str->bot);
+	free(str);
+	str = NULL;
+
+}
+
+void			clean_matrix(t_matrix **root)
+{
+	clean_str(*root, (*root)->right);
+	free(*root);
+	*root = NULL;
 }

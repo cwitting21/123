@@ -6,7 +6,7 @@
 /*   By: wmaykit <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/06 20:36:26 by wmaykit           #+#    #+#             */
-/*   Updated: 2019/06/12 19:09:15 by cwitting         ###   ########.fr       */
+/*   Updated: 2019/06/12 21:22:58 by wmaykit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,6 +121,9 @@ int					algorithm_dlx(t_matrix *knut, t_stack *stack, int figures,
 			recover_wrong(guess->right->right->right, tmp, figures);
 	}
 	else
+	{
+		recovery(guess, figures);
 		stack = add_to_stack(stack, guess);
+	}
 	return (res);
 }
