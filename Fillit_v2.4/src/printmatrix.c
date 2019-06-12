@@ -6,7 +6,7 @@
 /*   By: wmaykit <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/16 19:54:16 by wmaykit           #+#    #+#             */
-/*   Updated: 2019/06/12 18:50:30 by cwitting         ###   ########.fr       */
+/*   Updated: 2019/06/12 19:26:40 by cwitting         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,16 +68,13 @@ void				printmatrix(t_matrix *root)
 	t_matrix		*start;
 	unsigned		len_max;
 	unsigned		lvl;
-	int				i;
 
 	lvl = 1;
-	i = 1;
 	printheader(root);
 	start = root->right;
 	len_max = scan(root);
 	while (lvl <= len_max + 1)
 	{
-
 		if (start == root)
 		{
 			++lvl;
@@ -89,7 +86,6 @@ void				printmatrix(t_matrix *root)
 			printone(start->bot, lvl);
 			ft_putchar(' ');
 		}
-		i++;
 		start = start->right;
 	}
 }

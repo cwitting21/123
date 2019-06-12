@@ -6,7 +6,7 @@
 #    By: wmaykit <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/12 20:16:44 by wmaykit           #+#    #+#              #
-#    Updated: 2019/05/25 15:48:31 by wmaykit          ###   ########.fr        #
+#    Updated: 2019/06/12 19:27:52 by cwitting         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME = fillit
 
 # flags
 CC = gcc
-FLAGS = -Wall -Wextra -Werror -g -O0
+FLAGS = -Wall -Wextra -Werror
 
 # repo for compiling
 LIB_DIR = ./libft/

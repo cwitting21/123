@@ -6,7 +6,7 @@
 /*   By: wmaykit <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 18:35:07 by wmaykit           #+#    #+#             */
-/*   Updated: 2019/06/09 19:42:21 by cwitting         ###   ########.fr       */
+/*   Updated: 2019/06/12 20:03:03 by cwitting         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 static void		help(void)
 {
-	char buf[51];
-	int fd;
-	int end;
+	char		buf[51];
+	int			fd;
+	int			end;
 
-	fd = open("./include/.man", O_RDONLY);
+	fd = open("./include/.man.c", O_RDONLY);
 	while ((end = read(fd, buf, 50)))
 	{
 		buf[end] = '\0';
@@ -27,10 +27,10 @@ static void		help(void)
 	close(fd);
 }
 
-int		main(int ac, char **av)
+int				main(int ac, char **av)
 {
-	int		opt;
-	int		fd;
+	int			opt;
+	int			fd;
 
 	opt = 0;
 	if (ac == 3 && ft_strncmp(av[1], "--options", 9) == 0)
