@@ -6,7 +6,7 @@
 /*   By: wmaykit <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/16 21:34:12 by wmaykit           #+#    #+#             */
-/*   Updated: 2019/06/11 23:42:16 by cwitting         ###   ########.fr       */
+/*   Updated: 2019/06/12 15:36:51 by cwitting         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,10 +62,11 @@ static unsigned		countlen(t_matrix *start, unsigned len)
 	if ((start->right->x + 1) == start->right->right->x &&
 				(start->right->x + 2) && (start->x + 1) !=
 				start->right->x)
-		return (start->x + len * 2 == start->left->x || start->x + (len * 2) + 1 ==
-			  start->left->x || start->x + (len * 2) - 1 == start->left->x ? 2 : 3);
-	if ((start->left->x - len) <= start->x && start->left->x - 3 != start->x &&
-			start->left->left->x - 2 != start->x)
+		return (start->x + len * 2 == start->left->x || start->x + (len * 2) + 1
+			== start->left->x || start->x + (len * 2) - 1
+			== start->left->x ? 2 : 3);
+	if (((start->left->x - len) <= start->x) && ((start->left->x - 3) != start->x)
+		&& ((start->left->left->x - 2) != start->x))
 		start = start->left;
 	if ((start->right->right->x - len) <= start->x && start->left->x - 3 !=
 			start->x && start->left->left->x - 2 != start->x)
