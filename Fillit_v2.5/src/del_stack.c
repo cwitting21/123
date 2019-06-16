@@ -6,7 +6,7 @@
 /*   By: cwitting <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/12 21:21:34 by cwitting          #+#    #+#             */
-/*   Updated: 2019/06/12 21:54:15 by cwitting         ###   ########.fr       */
+/*   Updated: 2019/06/16 06:16:24 by cwitting         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,10 @@
 
 void		del_stack(t_stack *end, t_stack *start)
 {
-	if (start == end)
+	if (!end || !start || start == end)
 	{
-		free(end);
+		if (end)
+			free(end);
 		return ;
 	}
 	del_stack(end, start->right);

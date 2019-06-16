@@ -6,7 +6,7 @@
 /*   By: wmaykit <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 12:30:22 by wmaykit           #+#    #+#             */
-/*   Updated: 2019/06/16 03:25:58 by cwitting         ###   ########.fr       */
+/*   Updated: 2019/06/16 05:26:12 by cwitting         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,17 @@ static int		minsqrt(int *figures)
 
 int				backtracking(t_dlx *box)
 {
+	int			i;
+
+	i = 0;
 	box->edge = minsqrt(box->figures);
 	if (!(box->res = new_lst_stack(NULL)) || !buildmatrix(box))
 		return (0);
-	while (!algorithm_dlx(box, box->figures[0]))
+	while (!(i = algorithm_dlx(box, box->figures[0])))
 	{
 		++box->edge;
 		if (!buildmatrix(box))
 			return (0);
 	}
-	return (1);
+	return (i < 0 ? 0 : 1);
 }

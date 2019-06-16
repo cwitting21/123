@@ -6,7 +6,7 @@
 /*   By: wmaykit <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/26 14:49:45 by wmaykit           #+#    #+#             */
-/*   Updated: 2019/06/16 03:43:36 by cwitting         ###   ########.fr       */
+/*   Updated: 2019/06/16 06:16:27 by cwitting         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void			printres(t_dlx *box)
 	unsigned	sqr;
 
 	x = 1;
-	res = box->res->right;
+	res = box->res;
 	sqr = box->edge * box->edge;
 	while (x <= sqr)
 	{

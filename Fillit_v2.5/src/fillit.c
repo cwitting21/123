@@ -6,7 +6,7 @@
 /*   By: wmaykit <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 21:00:23 by wmaykit           #+#    #+#             */
-/*   Updated: 2019/06/16 04:00:23 by cwitting         ###   ########.fr       */
+/*   Updated: 2019/06/16 05:38:00 by cwitting         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,23 @@ static int		options(t_dlx *box, int opt)
 	return (1);
 }
 
+static int		clean_box(t_dlx **box)
+{
+	if (*box)
+	{
+		if ((*box)->figures)
+			free((*box)->figures);
+		if ((*box)->knut)
+			clean_matrix(&(*box)->knut);
+		if ((*box)->res)
+			del_stack((*box)->res, (*box)->res->right);
+		(*box)->figures = NULL;
+		free(*box);
+		*box = NULL;
+	}
+	return (0);
+}
+
 int				fillit(const int fd, int opt)
 {
 	char		*read;
@@ -75,18 +92,10 @@ int				fillit(const int fd, int opt)
 	read = NULL;
 	if (!(box = new_box(0)) ||
 			(!(box->figures = identify(ft_read(fd, &read), &read))))
-	{
-		if (box)
-		{
-			if (box->figures)
-				free(box->figures);
-			free(box);
-		}
-		return (0);
-	}
+		return (clean_box(&box));
 	if (opt == 1 || opt == 2)
 		return (options(NULL, opt));
-	if (!solve(&box, opt))
-		return (0);
+	if (!solve(&box))
+		return (clean_box(&box));
 	return (1);
 }

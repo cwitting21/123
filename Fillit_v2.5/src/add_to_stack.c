@@ -6,7 +6,7 @@
 /*   By: wmaykit <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 17:07:39 by wmaykit           #+#    #+#             */
-/*   Updated: 2019/05/20 17:56:14 by wmaykit          ###   ########.fr       */
+/*   Updated: 2019/06/16 06:05:52 by cwitting         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,17 @@ t_stack		*add_to_stack(t_stack *stack, t_matrix *res)
 
 	if (!(new = new_lst_stack(res)))
 		return (NULL);
-	if (stack->right)
+	if (stack->left)
 	{
-		stack->right->left = new;
-		new->right = stack->right;
+		new->left = stack->left;
+		stack->left->right = new;
 	}
 	else
 	{
-		new->right = stack;
-		stack->left = new;
+		new->left = stack;
+		stack->right = new;
 	}
-	stack->right = new;
-	new->left = stack;
-	return (new);
+	new->right = stack;
+	stack->left = new;
+	return (stack);
 }

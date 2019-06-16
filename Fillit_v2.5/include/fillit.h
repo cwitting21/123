@@ -6,7 +6,7 @@
 /*   By: wmaykit <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 20:51:56 by wmaykit           #+#    #+#             */
-/*   Updated: 2019/06/16 03:26:27 by cwitting         ###   ########.fr       */
+/*   Updated: 2019/06/16 06:08:20 by cwitting         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ typedef struct		s_matrix
 typedef struct		s_stack
 {
 	t_matrix		*res;
-	unsigned		edge;
 	struct s_stack	*left;
 	struct s_stack	*right;
 }					t_stack;
@@ -70,7 +69,7 @@ int					ft_read(const int fd, char **read);
 int					*identify(int len, char **read);
 int					bitmove(int bits, char map);
 int					ft_error(void);
-int					solve(t_dlx **box, int opt);
+int					solve(t_dlx **box);
 int					ft_sqrt(int nb);
 int					buildmatrix(t_dlx *box);
 int					header_lst_str(t_matrix **root, unsigned len);

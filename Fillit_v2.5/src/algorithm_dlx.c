@@ -6,7 +6,7 @@
 /*   By: wmaykit <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/06 20:36:26 by wmaykit           #+#    #+#             */
-/*   Updated: 2019/06/16 03:36:16 by cwitting         ###   ########.fr       */
+/*   Updated: 2019/06/16 06:17:55 by cwitting         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,8 @@ int					algorithm_dlx(t_dlx *box, int stage)
 	else
 	{
 		recovery_sets(guess->left);
-		box->res = add_to_stack(box->res, guess);
+		if (!add_to_stack(box->res, guess))
+			return (-1);
 	}
 	return (res);
 }
