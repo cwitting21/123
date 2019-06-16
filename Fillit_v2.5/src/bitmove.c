@@ -1,41 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   clean_matrix.c                                     :+:      :+:    :+:   */
+/*   bitmove.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wmaykit <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/12 20:50:46 by wmaykit           #+#    #+#             */
-/*   Updated: 2019/06/16 03:32:30 by cwitting         ###   ########.fr       */
+/*   Created: 2019/05/08 17:34:47 by wmaykit           #+#    #+#             */
+/*   Updated: 2019/06/12 15:43:12 by cwitting         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-static void		clean_col(t_matrix *top, t_matrix *bot)
+int			bitmove(int bits, char map)
 {
-	if (bot == top)
-		return ;
-	clean_col(top, bot->bot);
-	free(bot);
-	bot = NULL;
-}
-
-static void		clean_str(t_matrix *root, t_matrix *str)
-{
-	if (str == root)
-		return ;
-	clean_str(root, str->right);
-	clean_col(str, str->bot);
-	free(str);
-	str = NULL;
-
-}
-
-void			clean_matrix(t_matrix **root)
-{
-	printmatrix(*root);
-	clean_str(*root, (*root)->right);
-	free(*root);
-	*root = NULL;
+	if (map == '.' || map == '#')
+	{
+		bits >>= 1;
+		if (map == '#')
+			bits |= 0x8000;
+	}
+	return (bits);
 }

@@ -1,41 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   clean_matrix.c                                     :+:      :+:    :+:   */
+/*   new_lst_stack.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wmaykit <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/12 20:50:46 by wmaykit           #+#    #+#             */
-/*   Updated: 2019/06/16 03:32:30 by cwitting         ###   ########.fr       */
+/*   Created: 2019/05/20 17:42:18 by wmaykit           #+#    #+#             */
+/*   Updated: 2019/06/12 18:49:08 by cwitting         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-static void		clean_col(t_matrix *top, t_matrix *bot)
+t_stack		*new_lst_stack(t_matrix *res)
 {
-	if (bot == top)
-		return ;
-	clean_col(top, bot->bot);
-	free(bot);
-	bot = NULL;
-}
+	t_stack	*new;
 
-static void		clean_str(t_matrix *root, t_matrix *str)
-{
-	if (str == root)
-		return ;
-	clean_str(root, str->right);
-	clean_col(str, str->bot);
-	free(str);
-	str = NULL;
-
-}
-
-void			clean_matrix(t_matrix **root)
-{
-	printmatrix(*root);
-	clean_str(*root, (*root)->right);
-	free(*root);
-	*root = NULL;
+	if (!(new = (t_stack *)malloc(sizeof(t_stack))))
+		return (NULL);
+	new->right = NULL;
+	new->left = NULL;
+	new->res = res;
+	return (new);
 }

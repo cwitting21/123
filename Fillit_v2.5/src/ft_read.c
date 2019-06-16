@@ -1,41 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   clean_matrix.c                                     :+:      :+:    :+:   */
+/*   ft_read.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wmaykit <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/12 20:50:46 by wmaykit           #+#    #+#             */
-/*   Updated: 2019/06/16 03:32:30 by cwitting         ###   ########.fr       */
+/*   Created: 2019/05/09 23:19:06 by wmaykit           #+#    #+#             */
+/*   Updated: 2019/06/12 18:30:29 by cwitting         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-static void		clean_col(t_matrix *top, t_matrix *bot)
+int		ft_read(const int fd, char **x)
 {
-	if (bot == top)
-		return ;
-	clean_col(top, bot->bot);
-	free(bot);
-	bot = NULL;
-}
+	int		len;
+	char	buf[547];
 
-static void		clean_str(t_matrix *root, t_matrix *str)
-{
-	if (str == root)
-		return ;
-	clean_str(root, str->right);
-	clean_col(str, str->bot);
-	free(str);
-	str = NULL;
-
-}
-
-void			clean_matrix(t_matrix **root)
-{
-	printmatrix(*root);
-	clean_str(*root, (*root)->right);
-	free(*root);
-	*root = NULL;
+	len = 0;
+	len = read(fd, &buf, 546);
+	if (len <= 0 || !(*x = ft_strsub(buf, 0, len)))
+		return (-1);
+	return (len);
 }

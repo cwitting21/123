@@ -6,7 +6,7 @@
 /*   By: wmaykit <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/12 20:50:46 by wmaykit           #+#    #+#             */
-/*   Updated: 2019/06/16 03:32:30 by cwitting         ###   ########.fr       */
+/*   Updated: 2019/06/16 03:37:51 by cwitting         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,10 @@ static void		clean_str(t_matrix *root, t_matrix *str)
 	clean_col(str, str->bot);
 	free(str);
 	str = NULL;
-
 }
 
 void			clean_matrix(t_matrix **root)
 {
-	printmatrix(*root);
 	clean_str(*root, (*root)->right);
 	free(*root);
 	*root = NULL;

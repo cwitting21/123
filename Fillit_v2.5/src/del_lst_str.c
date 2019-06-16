@@ -1,41 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   clean_matrix.c                                     :+:      :+:    :+:   */
+/*   del_lst_str.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wmaykit <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/12 20:50:46 by wmaykit           #+#    #+#             */
-/*   Updated: 2019/06/16 03:32:30 by cwitting         ###   ########.fr       */
+/*   Created: 2019/06/06 22:48:09 by wmaykit           #+#    #+#             */
+/*   Updated: 2019/06/15 20:07:50 by wmaykit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-static void		clean_col(t_matrix *top, t_matrix *bot)
+t_matrix	*del_lst_str(t_matrix *del)
 {
-	if (bot == top)
-		return ;
-	clean_col(top, bot->bot);
-	free(bot);
-	bot = NULL;
-}
-
-static void		clean_str(t_matrix *root, t_matrix *str)
-{
-	if (str == root)
-		return ;
-	clean_str(root, str->right);
-	clean_col(str, str->bot);
-	free(str);
-	str = NULL;
-
-}
-
-void			clean_matrix(t_matrix **root)
-{
-	printmatrix(*root);
-	clean_str(*root, (*root)->right);
-	free(*root);
-	*root = NULL;
+	del->top->bot = del->bot;
+	del->bot->top = del->top;
+	return (del->right);
 }

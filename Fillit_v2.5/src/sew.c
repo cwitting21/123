@@ -1,41 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   clean_matrix.c                                     :+:      :+:    :+:   */
+/*   sew.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wmaykit <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/12 20:50:46 by wmaykit           #+#    #+#             */
-/*   Updated: 2019/06/16 03:32:30 by cwitting         ###   ########.fr       */
+/*   Created: 2019/05/18 13:15:44 by wmaykit           #+#    #+#             */
+/*   Updated: 2019/06/15 20:32:18 by wmaykit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-static void		clean_col(t_matrix *top, t_matrix *bot)
+void				sew(t_matrix *knut)
 {
-	if (bot == top)
-		return ;
-	clean_col(top, bot->bot);
-	free(bot);
-	bot = NULL;
-}
+	t_matrix		*start;
+	t_matrix		*down;
+	unsigned		num;
 
-static void		clean_str(t_matrix *root, t_matrix *str)
-{
-	if (str == root)
-		return ;
-	clean_str(root, str->right);
-	clean_col(str, str->bot);
-	free(str);
-	str = NULL;
-
-}
-
-void			clean_matrix(t_matrix **root)
-{
-	printmatrix(*root);
-	clean_str(*root, (*root)->right);
-	free(*root);
-	*root = NULL;
+	start = knut->right;
+	while (start != knut)
+	{
+		num = 0;
+		down = start;
+		while (down->bot)
+		{
+			++num;
+			down = down->bot;
+			down->root = start;
+		}
+		start->y = num;
+		down->bot = start;
+		start->top = down;
+		start = start->right;
+	}
 }

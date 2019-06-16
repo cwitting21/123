@@ -1,41 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   clean_matrix.c                                     :+:      :+:    :+:   */
+/*   newlst.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wmaykit <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/12 20:50:46 by wmaykit           #+#    #+#             */
-/*   Updated: 2019/06/16 03:32:30 by cwitting         ###   ########.fr       */
+/*   Created: 2019/05/13 21:28:34 by wmaykit           #+#    #+#             */
+/*   Updated: 2019/06/16 00:52:25 by wmaykit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-static void		clean_col(t_matrix *top, t_matrix *bot)
+t_matrix	*newlst(t_matrix *root, unsigned x, unsigned y, char name)
 {
-	if (bot == top)
-		return ;
-	clean_col(top, bot->bot);
-	free(bot);
-	bot = NULL;
-}
+	t_matrix	*new;
 
-static void		clean_str(t_matrix *root, t_matrix *str)
-{
-	if (str == root)
-		return ;
-	clean_str(root, str->right);
-	clean_col(str, str->bot);
-	free(str);
-	str = NULL;
-
-}
-
-void			clean_matrix(t_matrix **root)
-{
-	printmatrix(*root);
-	clean_str(*root, (*root)->right);
-	free(*root);
-	*root = NULL;
+	if (!(new = (t_matrix *)malloc(sizeof(t_matrix))))
+		return (NULL);
+	new->top = NULL;
+	new->bot = NULL;
+	new->right = NULL;
+	new->left = NULL;
+	if (!root)
+		new->root = new;
+	else
+		new->root = root;
+	new->x = x;
+	new->y = y;
+	new->name = name;
+	return (new);
 }
